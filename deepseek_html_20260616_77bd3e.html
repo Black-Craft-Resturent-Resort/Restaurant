@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Blackcraft | বাংলাদেশি রেস্তোরাঁ ও রিসোর্ট</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Hind+Siliguri:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', 'Hind Siliguri', sans-serif;
+      background-color: #0a0a0a;
+      color: #f0f0f0;
+      scroll-behavior: smooth;
+      line-height: 1.5;
+    }
+
+    h1, h2, h3, .logo, .hero-title, .section-title {
+      font-family: 'Playfair Display', 'Hind Siliguri', serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      background: #000000cc;
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #2a2a2a;
+      padding: 16px 0;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #f5e7d9, #c0a080);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .logo span {
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: normal;
+      background: none;
+      color: #b87c4f;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #cb9e6b;
+    }
+
+    .hero {
+      background: linear-gradient(107deg, #0a0a0a 0%, #1a130b 100%);
+      padding: 80px 0 100px;
+      border-bottom: 1px solid #2e2a24;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero-badge {
+      color: #cb9e6b;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .hero-title {
+      font-size: 3.7rem;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      font-weight: 800;
+    }
+
+    .hero-title i {
+      color: #cb9e6b;
+      font-style: normal;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #bcb6ab;
+      max-width: 500px;
+      margin-bottom: 32px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      font-weight: 600;
+      border-radius: 40px;
+      text-decoration: none;
+      transition: 0.25s;
+    }
+
+    .btn-primary {
+      background: #cb9e6b;
+      color: #0a0a0a;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: #b8844c;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid #cb9e6b;
+      color: #cb9e6b;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: #cb9e6b20;
+      transform: translateY(-2px);
+    }
+
+    .hero-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 28px;
+      box-shadow: 0 20px 35px -12px black;
+      border: 1px solid #3a3026;
+      width: 100%;
+      object-fit: cover;
+      height: auto;
+    }
+
+    .section {
+      padding: 80px 0;
+      border-bottom: 1px solid #1f1c18;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 48px;
+      text-align: center;
+      position: relative;
+      width: 100%;
+    }
+
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: #cb9e6b;
+      margin: 12px auto 0;
+    }
+
+    .dishes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 40px;
+      margin-top: 20px;
+    }
+
+    .dish-card {
+      background: #13100c;
+      border-radius: 24px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #2b241e;
+    }
+
+    .dish-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -15px black;
+      border-color: #cb9e6b60;
+    }
+
+    .dish-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      background: #2a241e;
+    }
+
+    .dish-info {
+      padding: 20px;
+    }
+
+    .dish-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .dish-desc {
+      color: #bcb6ab;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+
+    .price {
+      font-weight: 700;
+      color: #cb9e6b;
+      font-size: 1.2rem;
+    }
+
+    .reviews-slider {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .review-card {
+      background: #12100e;
+      border-radius: 24px;
+      padding: 28px 24px;
+      max-width: 350px;
+      flex: 1;
+      min-width: 260px;
+      border: 1px solid #2b241e;
+      transition: 0.2s;
+    }
+
+    .review-stars {
+      color: #f5b642;
+      margin-bottom: 16px;
+      font-size: 1.1rem;
+    }
+
+    .review-text {
+      font-style: italic;
+      margin-bottom: 20px;
+      color: #ded9d0;
+      line-height: 1.5;
+    }
+
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .reviewer-avatar {
+      width: 48px;
+      height: 48px;
+      background: #2f2a24;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #cb9e6b;
+    }
+
+    .reviewer-name {
+      font-weight: 600;
+    }
+
+    .reviewer-title {
+      font-size: 0.75rem;
+      color: #8f887e;
+    }
+
+    .contact-support {
+      background: linear-gradient(145deg, #0c0b0a 0%, #14110c 100%);
+      border-radius: 48px;
+      padding: 48px 40px;
+      margin-top: 20px;
+    }
+
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      align-items: flex-start;
+    }
+
+    .contact-info h3, .support-hours h3 {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 20px 0;
+      font-size: 1.1rem;
+    }
+
+    .contact-detail i {
+      width: 32px;
+      color: #cb9e6b;
+      font-size: 1.4rem;
+    }
+
+    .address-block {
+      margin-top: 20px;
+      border-top: 1px solid #2f2922;
+      padding-top: 20px;
+    }
+
+    .support-hours ul {
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    .support-hours li {
+      margin-bottom: 12px;
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    .map-placeholder {
+      background: #1e1914;
+      border-radius: 24px;
+      padding: 20px;
+      text-align: center;
+      border: 1px dashed #cb9e6b;
+      margin-top: 24px;
+    }
+
+    .bengali-note {
+      font-size: 0.85rem;
+      color: #cb9e6b;
+      text-align: center;
+      margin-top: 8px;
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+
+    footer {
+      background: #050505;
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 0.8rem;
+      color: #6f6a63;
+    }
+
+    @media (max-width: 800px) {
+      .hero-title { font-size: 2.5rem; }
+      .nav-wrapper { flex-direction: column; }
+      .nav-links { gap: 20px; flex-wrap: wrap; justify-content: center; }
+      .section { padding: 60px 0; }
+      .contact-support { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav-wrapper">
+    <div class="logo">ব্ল্যাকক্রাফ্ট <span>BLACKCRAFT RESTAURANT & RESORT</span></div>
+    <ul class="nav-links">
+      <li><a href="#home">হোম</a></li>
+      <li><a href="#dishes">আমাদের খাবার</a></li>
+      <li><a href="#reviews">রিভিউ</a></li>
+      <li><a href="#contact">যোগাযোগ</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">স্বাগতম • WELCOME TO BLACKCRAFT</div>
+        <h1 class="hero-title">বাংলার ঐতিহ্য, <i>গথিক রুচি</i></h1>
+        <p class="hero-desc">বাংলাদেশের প্রথম গথিক-থিম রেস্তোরাঁ ও রিসোর্ট। আধুনিক পরিবেশে authentic বাঙালি খাবারের স্বাদ।</p>
+        <div class="btn-group">
+          <a href="#dishes" class="btn btn-primary">মেনু দেখুন</a>
+          <a href="#contact" class="btn btn-outline">টেবিল বুক করুন</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://placehold.co/600x450/1a1510/e0c9a8?text=Blackcraft+Bangladesh+%7C+Your+Restaurant+Photo" alt="Blackcraft Restaurant Bangladesh">
+        <div class="bengali-note">📷 আপনার ব্ল্যাকক্রাফ্ট রেস্তোরাঁর ছবি দিন</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANGLADESHI DISHES SECTION -->
+  <section id="dishes" class="section">
+    <div class="container">
+      <h2 class="section-title">✦ আমাদের বিশেষ পদ ✦</h2>
+      <div class="dishes-grid">
+        <div class="dish-card">
+          <img class="dish-img" src="https://placehold.co/400x300/2c241e/e2c9a0?text=Kacchi+Biryani" alt="Kacchi Biryani">
+          <div class="dish-info">
+            <h3 class="dish-title">কাচ্চি বিরিয়ানি</h3>
+            <p class="dish-desc">ঢাকাই স্টাইল কাচ্চি বিরিয়ানি, মিষ্টি আতর, সন্দেশ ও টক দই সহ।</p>
+            <span class="price">৳450</span>
+          </div>
+        </div>
+        <div class="dish-card">
+          <img class="dish-img" src="https://placehold.co/400x300/2d251e/e0c297?text=Ilish+Bhapa" alt="Ilish Bhapa">
+          <div class="dish-info">
+            <h3 class="dish-title">ইলিশ ভাপা</h3>
+            <p class="dish-desc">সর্ষে ইলিশ, নারকেল দুধ, কাঁচা মরিচ ও ধনে পাতা।</p>
+            <span class="price">৳650</span>
+          </div>
+        </div>
+        <div class="dish-card">
+          <img class="dish-img" src="https://placehold.co/400x300/2f2820/e3cfa8?text=Beef+Tehari" alt="Beef Tehari">
+          <div class="dish-info">
+            <h3 class="dish-title">গরুর তেহারি</h3>
+            <p class="dish-desc">পুরান ঢাকার স্টাইল তেহারি, আলু ও মসলার মিশ্রণ।</p>
+            <span class="price">৳390</span>
+          </div>
+        </div>
+        <div class="dish-card">
+          <img class="dish-img" src="https://placehold.co/400x300/32281f/e9d2ac?text=Chingri+Malai" alt="Chingri Malai Curry">
+          <div class="dish-info">
+            <h3 class="dish-title">চিংড়ি মালাই কারি</h3>
+            <p class="dish-desc">নারকেল দুধের ঘন রস, বাগদা চিংড়ি, কিশমিশ ও কাজু বাদাম।</p>
+            <span class="price">৳580</span>
+          </div>
+        </div>
+      </div>
+      <div class="bengali-note" style="margin-top: 24px;">🍽️ আপনার ব্ল্যাকক্রাফ্টের আসল খাবারের ছবি বসান</div>
+    </div>
+  </section>
+
+  <!-- BENGALI DESSERTS SECTION -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <h2 class="section-title">✦ মিষ্টি রস ✦</h2>
+      <div class="dishes-grid">
+        <div class="dish-card">
+          <img class="dish-img" src="https://placehold.co/400x300/2a231c/e1cba5?text=Roshmalai" alt="Roshmalai">
+          <div class="dish-info">
+            <h3 class="dish-title">রসমালাই</h3>
+            <p class="dish-desc">তাজা ছানার বড়া, ঘন দুধের সিরায় এলাচ ও পেস্তা মাখা।</p>
+            <span class="price">৳180</span>
+          </div>
+        </div>
+        <div class="dish-card">
+          <img class="dish-img" src="https://placehold.co/400x300/2e261f/e4ceaa?text=Chomchom" alt="Chomchom">
+          <div class="dish-info">
+            <h3 class="dish-title">চমচম</h3>
+            <p class="dish-desc">তরুলের বিশেষ চমচম, গোলাপ জল ও নারকেল কোরানো।</p>
+            <span class="price">৳150</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS SECTION - multiple Bangladeshi guest reviews -->
+  <section id="reviews" class="section">
+    <div class="container">
+      <h2 class="section-title">✧ অতিথিদের মতামত ✧</h2>
+      <div class="reviews-slider">
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"বাংলাদেশে এত সুন্দর গথিক রেস্তোরাঁ আগে দেখিনি। ইলিশ ভাপা আর পরিবেশ অসাধারণ!"</p><div class="reviewer"><div class="reviewer-avatar">এস</div><div><div class="reviewer-name">সুমাইয়া আ.</div><div class="reviewer-title">ঢাকার ফুডি</div></div></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Blackcraft রিসোর্টে থেকে আমরা বিরিয়ানি আর চিংড়ি মালাই খেয়েছি। রিসোর্টের পুল ভিউ অসাধারণ।"</p><div class="reviewer"><div class="reviewer-avatar">র</div><div><div class="reviewer-name">রাকিব হাসান</div><div class="reviewer-title">রিসোর্ট গেস্ট</div></div></div></div>
+        <div class="review-card"><div class="review-stars">★★★★½</div><p class="review-text">"বাংলাদেশি খাবারের সাথে মডার্ন টুইস্ট — রসমালাই আর তেহারি দারুণ। সাপোর্ট স্টাফ খুব যত্নশীল।"</p><div class="reviewer"><div class="reviewer-avatar">ন</div><div><div class="reviewer-name">নওরিন জে.</div><div class="reviewer-title">লাইফস্টাইল ব্লগার</div></div></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"প্রত্যেক পদই বাঙালিয়ানায় ভরপুর। কাচ্চি বিরিয়ানি আমার জীবনের সেরা। Blackcraft সত্যি অন্যরকম।"</p><div class="reviewer"><div class="reviewer-avatar">ট</div><div><div class="reviewer-name">তানভীর সি.</div><div class="reviewer-title">খাদ্য সমালোচক</div></div></div></div>
+        <div class="review-card"><div class="review-stars">★★★★½</div><p class="review-text">"চমৎকার পরিবেশ, বন্ধুত্বপূর্ণ স্টাফ আর রিসোর্টের নৈশভোজ ছিল ম্যাজিকাল। নিশ্চয়ই ফিরব।"</p><div class="reviewer"><div class="reviewer-avatar">মি</div><div><div class="reviewer-name">মিশু রহমান</div><div class="reviewer-title">নিয়মিত দর্শক</div></div></div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"পাহাড় আর গথিক স্থাপত্যের মেলবন্ধন। রাতে ব্যাংকুয়েট হলে বসে বাঙালি খাবার অনন্য অভিজ্ঞতা।"</p><div class="reviewer"><div class="reviewer-avatar">অ</div><div><div class="reviewer-name">অর্ণব দে</div><div class="reviewer-title">ট্রাভেল এক্সপার্ট</div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & SUPPORT with BANGLADESHI ADDRESS & NUMBER -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="contact-support">
+        <div class="contact-flex">
+          <div class="contact-info">
+            <h3><i class="fas fa-headset"></i> ২৪/৭ সাপোর্ট ও রিজার্ভেশন</h3>
+            <div class="contact-detail">
+              <i class="fas fa-phone-alt"></i>
+              <div><strong>+880 1888-123456</strong><br>কল করুন অথবা হোয়াটসঅ্যাপ</div>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-envelope"></i>
+              <div>reservation@blackcraftbangladesh.com<br>support@blackcraftbd.com</div>
+            </div>
+            <div class="address-block">
+              <i class="fas fa-map-marker-alt" style="color:#cb9e6b; margin-right: 10px;"></i>
+              <strong style="font-size:1.1rem;">ব্ল্যাকক্রাফ্ট রেস্তোরাঁ ও রিসোর্ট</strong>
+              <p style="margin-top: 12px;">২৩৫, গথিক অ্যাভিনিউ, গুলশান ২, ঢাকা - ১২১২, বাংলাদেশ</p>
+              <p style="margin-top: 8px; font-size: 0.85rem;">📍 ভ্যানপিক গেটের পাশে, অভ্যর্থনা ২৪ ঘন্টা</p>
+            </div>
+          </div>
+          <div class="support-hours">
+            <h3>✦ খোলার সময় ✦</h3>
+            <ul>
+              <li><span>রেস্তোরাঁ:</span><span> সোম-শনি ১২PM – ১১PM</span></li>
+              <li><span>রিসোর্ট চেক-ইন:</span><span> ২৪/৭</span></li>
+              <li><span>শুক্রবার ও শনিবার ব্রাঞ্চ:</span><span> ১০AM – ২PM</span></li>
+              <li><span>রুফটপ লাউঞ্জ:</span><span> ৬PM – ১২AM</span></li>
+            </ul>
+            <div class="map-placeholder">
+              <i class="fas fa-map-marked-alt" style="font-size: 2rem; color:#cb9e6b;"></i>
+              <p>গুগল ম্যাপ লিংক ও দিকনির্দেশনা পেতে কল করুন সাপোর্ট নাম্বারে।</p>
+            </div>
+          </div>
+        </div>
+        <!-- explicit support number and address repeated -->
+        <div style="margin-top: 32px; text-align: center; border-top: 1px solid #2f2a21; padding-top: 24px;">
+          <p><i class="fas fa-concierge-bell"></i> জরুরী সহায়তা ও টেবিল বুকিং: <strong style="color:#cb9e6b; font-size: 1.2rem;">+880 1888-123456</strong> ঠিকানা: <strong>২৩৫ গুলশান ২, ঢাকা, বাংলাদেশ</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© ২০২৫ ব্ল্যাকক্রাফ্ট রেস্তোরাঁ ও রিসোর্ট — বাংলাদেশের প্রথম গথিক বাঙালি রেস্তোরাঁ</p>
+    <p style="margin-top: 12px;"><i class="fab fa-instagram"></i> @blackcraftbd &nbsp;|&nbsp; <i class="fab fa-facebook"></i> blackcraft.bangladesh &nbsp;|&nbsp; <i class="fab fa-x-twitter"></i> @blckcraftbd</p>
+    <p style="margin-top: 16px; font-size: 0.7rem;">📸 দয়া করে আপনার ব্ল্যাকক্রাফ্ট রেস্তোরাঁর আসল ছবি (হিরো, খাবার, রিসোর্ট) এটি থেকে img src পরিবর্তন করে যোগ করুন</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    document.querySelectorAll('.nav-links a, .btn-primary[href="#dishes"], .btn-outline[href="#contact"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const hash = this.getAttribute('href');
+        if(hash && hash.startsWith('#')) {
+          e.preventDefault();
+          const targetId = hash.substring(1);
+          const targetElement = document.getElementById(targetId);
+          if(targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+  })();
+</script>
+
+<!--
+  ===============================================
+  কীভাবে ছবি পরিবর্তন করবেন (HOW TO ADD REAL IMAGES)
+  ===============================================
+  প্রতিটি img ট্যাগের src="..." এর ভিতরে আপনার নিজের ছবির পাথ দিন।
+  যেমন: src="images/blackcraft-bangladesh-biryani.jpg"
+  
+  যেসব ছবি আপনি পরিবর্তন করতে পারেন:
+  1. হিরো ইমেজ (উপরে Blackcraft রিসোর্টের ছবি)
+  2. কাচ্চি বিরিয়ানি ইমেজ
+  3. ইলিশ ভাপা ইমেজ
+  4. গরুর তেহারি ইমেজ
+  5. চিংড়ি মালাই ইমেজ
+  6. মিষ্টির ছবি (রসমালাই ও চমচম)
+  
+  আপনার ছবি Google বা লোকাল ফাইল থেকে সংগ্রহ করে "images" ফোল্ডারে রাখুন এবং সেসব লিংক বসান।
+-->
+</body>
+</html>
